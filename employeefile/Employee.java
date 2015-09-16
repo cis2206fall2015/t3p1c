@@ -2,7 +2,7 @@ package employeefile;
 
 /**
  *
- * @author Your Name Here
+ * @author RATM 
  */
 public class Employee {
 
