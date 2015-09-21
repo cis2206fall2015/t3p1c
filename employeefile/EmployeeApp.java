@@ -4,7 +4,7 @@ import java.util.Scanner;
 
 /**
  *
- * @author Your Name Here
+ * @author Team 3
  */
 public class EmployeeApp {
 
