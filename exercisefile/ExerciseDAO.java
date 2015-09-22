@@ -24,7 +24,7 @@ public class ExerciseDAO {
         this("exdata.txt");
     }
 
-    public EmployeeDAO(String fileName) {
+    public ExerciseDAO(String fileName) {
         this.fileName = fileName;
         this.myList = new ArrayList<>();
         try {
@@ -37,27 +37,28 @@ public class ExerciseDAO {
         readList();
     }
 
-    public void createRecord(Employee employee) {
-        myList.add(employee);
+    public void createRecord(Exercise exercise) {
+        myList.add(Exercise);
         writeList();
     }
 
-    public Employee retrieveRecord(int id) {
-        for (Employee employee : myList) {
-            if (employee.getEmpId() == id) {
-                return employee;
+    public Exercise retrieveRecord(int id) {
+        for (Exercise exercise : myList) {
+            if (exercise.getDbId() == id) {
+                return exercise;
             }
         }
         return null;
     }
 
-    public void updateRecord(Employee updatedEmployee) {
-        for (Employee employee : myList) {
-            if (employee.getEmpId() == updatedEmployee.getEmpId()) {
-                employee.setLastName(updatedEmployee.getLastName());
-                employee.setFirstName(updatedEmployee.getFirstName());
-                employee.setHomePhone(updatedEmployee.getHomePhone());
-                employee.setSalary(updatedEmployee.getSalary());
+    public void updateRecord(Exercise updatedExercise) {
+        for (Exercise exercise : myList) {
+            if (exercise.getDbId() == updatedExercise.getDbId()) {
+		exercise.setMemId (updatedExercise.getMemId());
+                exercise.setTimeStamp(updatedExercise.getTimeStamp());
+                exercise.setExerciseType(updatedExercise.getExerciseType());
+                exercise.setExerciseLength(updatedExercise.getExerciseLength());
+                exercise.setExerciseComments(updatedExercise.getExerciseComments());
                 break;
             }
         }
@@ -65,17 +66,17 @@ public class ExerciseDAO {
     }
 
     public void deleteRecord(int id) {
-        for (Employee employee : myList) {
-            if (employee.getEmpId() == id) {
-                myList.remove(employee);
+        for (Exercise exercise : myList) {
+            if (exercise.getDbId() == id) {
+                myList.remove(exercise);
                 break;
             }
         }
         writeList();
     }
 
-    public void deleteRecord(Employee employee) {
-        myList.remove(employee);
+    public void deleteRecord(Exercise exercise) {
+        myList.remove(exercise);
         writeList();
     }
 
@@ -86,12 +87,13 @@ public class ExerciseDAO {
             while ((line = reader.readLine()) != null) {
                 String[] data = line.split(",");
                 int id = Integer.parseInt(data[0]);
-                String last = data[1];
-                String first = data[2];
-                String homePhone = data[3];
-                double salary = Double.parseDouble(data[4]);
-                Employee employee = new Employee(id, last, first, homePhone, salary);
-                myList.add(employee);
+		int mId = Integer.parseInt(data[1]);
+		String ts = data[2];
+                String type = data[3];
+                int time = Integer.parseInt(data[4]);
+		String comment = data[5];
+                Exercise exercise = new Employee(id, mId, ts, type, time, comment);
+                myList.add(exercise);
             }
         } catch (IOException ioe) {
             System.out.println("Read file error with " + ioe.getMessage());
@@ -101,13 +103,14 @@ public class ExerciseDAO {
     protected void writeList() {
         Path path = Paths.get(fileName);
         try (BufferedWriter writer = Files.newBufferedWriter(path, StandardCharsets.UTF_8)) {
-            for (Employee employee : myList) {
-                writer.write(String.format("%d,%s,%s,%s,%.2f\n",
-                        employee.getEmpId(),
-                        employee.getLastName(),
-                        employee.getFirstName(),
-                        employee.getHomePhone(),
-                        employee.getSalary()));
+            for (Exercise exercise : myList) {
+                writer.write(String.format("%d,%d,%s,%s,%d,%s\n",
+                        exercise.getDbId(),
+			exercise.getMemId(),
+                        exercise.getTimeStamp(),
+                        exercise.getExerciseType(),
+                        exercise.getExerciseLength(),
+                        exercise.getExerciseComments()));
             }
         } catch (IOException ioe) {
             System.out.println("Write file error with " + ioe.getMessage());
@@ -118,10 +121,10 @@ public class ExerciseDAO {
     public String toString() {
         StringBuilder sb = new StringBuilder();
 
-        myList.stream().forEach((employee) -> {
-            sb.append(String.format("%5d : %s, %s, %s, %.2f\n", employee.getEmpId(),
-                    employee.getLastName(), employee.getFirstName(),
-                    employee.getHomePhone(), employee.getSalary()));
+        myList.stream().forEach((exercise) -> {
+            sb.append(String.format("%5d : %d, %s, %s, %d, %s\n", exercise.getDbId(), exercise.getMemId(),
+                    exercise.getTimeStamp(), employee.getExerciseType(),
+                    exercise.getExerciseLength(), employee.getExerciseComments()));
         });
 
         return sb.toString();
