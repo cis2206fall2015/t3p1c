@@ -1,4 +1,4 @@
-package employeefile;
+package exercisefile;
 
 import java.io.BufferedReader;
 import java.io.BufferedWriter;
@@ -13,15 +13,15 @@ import java.util.List;
 
 /**
  *
- * @author Your Name Here
+ * @author Brett Burley-Inners
  */
-public class EmployeeDAO {
+public class ExerciseDAO {
 
     private final String fileName;
-    protected final List<Employee> myList;
+    protected final List<Exercise> myList;
 
-    public EmployeeDAO() {
-        this("empdata.txt");
+    public ExerciseDAO() {
+        this("exdata.txt");
     }
 
     public EmployeeDAO(String fileName) {
