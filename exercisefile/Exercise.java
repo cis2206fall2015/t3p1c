@@ -85,7 +85,7 @@ public class Exercise {
 
     @Override
     public String toString() {
-        return "Exercise{" + "dbId=" + empId + ", memId=" + memId 
+        return "Exercise{" + "dbId=" + dbId + ", memId=" + memId 
                 + ", timeStamp=" + timeStamp + ", exerciseType=" + exerciseType 
                 + ", exerciseLength=" + exerciseLength + ", exerciseComments=" + exerciseComments + "}";
     }
