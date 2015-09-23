@@ -39,7 +39,7 @@ public class Exercise {
 	return dbId;
     }
 
-    public setDbId(int dbId) {
+    public setdbId(int dbId) {
 	this.dbId = dbId;
     }
 

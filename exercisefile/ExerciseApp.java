@@ -1,4 +1,4 @@
-package employeefile;
+package exercisefile;
 
 import java.util.Scanner;
 
@@ -6,22 +6,21 @@ import java.util.Scanner;
  *
  * @author Team 3
  */
-public class EmployeeApp {
+public class ExerciseApp {
 
-    EmployeeDAO empList = new EmployeeDAO();
+    ExerciseDAO exList = new ExerciseDAO();
     Scanner sc = new Scanner(System.in);
 
-    public EmployeeApp() {
+    public ExerciseApp() {
         menuLoop();
     }
 
     private void menuLoop() {
-        int id;
-        String last, first, homePhone;
-        double salary;
+        int dbId, memId, exerciseLength;
+        String timeStamp, exerciseType, exerciseComments;
         String choice = "1";
         while (!choice.equals("0")) {
-            System.out.println("\nEmployee App");
+            System.out.println("\nExercise App");
             System.out.println("0 = Quit");
             System.out.println("1 = List All Records");
             System.out.println("2 = Create New Record");
@@ -32,34 +31,36 @@ public class EmployeeApp {
 
             switch (choice) {
                 case "1":
-                    System.out.println(empList.toString());
+                    System.out.println(exList.toString());
                     break;
                 case "2":
-                    id = Validator.getInt(sc, "New employee ID: ");
-                    last = Validator.getLine(sc, "Last name: ");
-                    first = Validator.getLine(sc, "First name: ");
-                    homePhone = Validator.getLine(sc, "Home phone number: ");
-                    salary = Validator.getDouble(sc, "Yearly salary: ");
-                    empList.createRecord(new Employee(id, last, first, homePhone, salary));
+                    dbId = Validator.getInt(sc, "New exercise ID: ");
+                    memId = Validator.getInt(sc, "Member ID: ");
+                    timeStamp = Validator.getLine(sc, "Date/Time: ");
+                    exerciseType = Validator.getLine(sc, "Exercise Type: ");
+                    exerciseLength = Validator.getInt(sc, "Exercise Length: ");
+                    exerciseComments = Validator.getLine(sc, "Exercise Comments: ");
+                    exList.createRecord(new Exercise(dbId, memId, timeStamp, exerciseType, exerciseLength, exerciseComments));
                     break;
                 case "3":
-                    id = Validator.getInt(sc, "Employee id to retrieve: ");
-                    System.out.println(empList.retrieveRecord(id));
+                    id = Validator.getInt(sc, "Exercise ID to retrieve: ");
+                    System.out.println(exList.retrieveRecord(dbId));
                     break;
                 case "4":
-                    id = Validator.getInt(sc, "Employee ID to update: ");
-                    last = Validator.getLine(sc, "Last name: ");
-                    first = Validator.getLine(sc, "First name: ");
-                    homePhone = Validator.getLine(sc, "Home phone number: ");
-                    salary = Validator.getDouble(sc, "Yearly salary: ");
-                    empList.updateRecord(new Employee(id, last, first, homePhone, salary));
+                    dbId = Validator.getInt(sc, "Exercise ID to update: ");
+                    memId = Validator.getInt(sc, "Member ID: ");
+                    timeStamp = Validator.getLine(sc, "Date/Time: ");
+                    exerciseType = Validator.getLine(sc, "Exercise Type: ");
+                    exerciseLength = Validator.getInt(sc, "Exercise Length: ");
+                    exerciseComments = Validator.getLine(sc, "Exercise Comments: ");
+                    exList.updateRecord(new Exercise(dbId, memId, timeStamp, exerciseType, exerciseLength, exerciseComments));
                     break;
                 case "5":
-                    id = Validator.getInt(sc, "Employee ID to delete: ");
-                    System.out.println(empList.retrieveRecord(id));
+                    dbId = Validator.getInt(sc, "Exercise ID to delete: ");
+                    System.out.println(exList.retrieveRecord(dbId));
                     String ok = Validator.getLine(sc, "Deleter this record? (y/n) ", "^[yYnN]$");
                     if (ok.equalsIgnoreCase("Y")) {
-                        empList.deleteRecord(id);
+                        exList.deleteRecord(dbId);
                     }
                     break;
             }
@@ -70,6 +71,6 @@ public class EmployeeApp {
      * @param args the command line arguments
      */
     public static void main(String[] args) {
-        new EmployeeApp();
+        new ExerciseApp();
     }
 }

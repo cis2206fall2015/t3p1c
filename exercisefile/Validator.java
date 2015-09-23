@@ -1,4 +1,4 @@
-package employeefile;
+package exercisefile;
 
 import java.util.Scanner;
 
