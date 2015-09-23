@@ -92,7 +92,7 @@ public class ExerciseDAO {
                 String type = data[3];
                 int time = Integer.parseInt(data[4]);
 		String comment = data[5];
-                Exercise exercise = new (id, mId, ts, type, time, comment);
+                Exercise exercise = new Exercise(id, mId, ts, type, time, comment);
                 myList.add(exercise);
             }
         } catch (IOException ioe) {
