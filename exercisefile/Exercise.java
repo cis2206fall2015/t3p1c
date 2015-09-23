@@ -35,11 +35,11 @@ public class Exercise {
         this.exerciseComments = exerciseComments;
     }
 
-    public int getdbId() {
+    public int getDbId() {
 	return dbId;
     }
 
-    public setdbId(int dbId) {
+    public setDbId(int dbId) {
 	this.dbId = dbId;
     }
 

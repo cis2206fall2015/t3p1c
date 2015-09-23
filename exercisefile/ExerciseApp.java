@@ -1,11 +1,10 @@
 package exercisefile;
 
 import java.util.Scanner;
-
+import exercisefile.Validator;
 /**
  *
- * @author Team 3
- */
+ * @author Team 3 */
 public class ExerciseApp {
 
     ExerciseDAO exList = new ExerciseDAO();
@@ -43,7 +42,7 @@ public class ExerciseApp {
                     exList.createRecord(new Exercise(dbId, memId, timeStamp, exerciseType, exerciseLength, exerciseComments));
                     break;
                 case "3":
-                    id = Validator.getInt(sc, "Exercise ID to retrieve: ");
+                    dbId = Validator.getInt(sc, "Exercise ID to retrieve: ");
                     System.out.println(exList.retrieveRecord(dbId));
                     break;
                 case "4":
