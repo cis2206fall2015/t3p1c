@@ -38,7 +38,7 @@ public class ExerciseDAO {
     }
 
     public void createRecord(Exercise exercise) {
-        myList.add(Exercise);
+        myList.add(exercise);
         writeList();
     }
 

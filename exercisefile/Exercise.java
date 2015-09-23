@@ -21,7 +21,7 @@ public class Exercise {
         dbId = 0;
 	memId = 0;
         timeStamp = "";
-        exercistType = "";
+        exerciseType = "";
         exerciseLength = 0;
         exerciseComments = "";
     }
@@ -39,7 +39,7 @@ public class Exercise {
 	return dbId;
     }
 
-    public setDbId(int dbId) {
+    public void setDbId(int dbId) {
 	this.dbId = dbId;
     }
 
