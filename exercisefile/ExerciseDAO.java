@@ -92,7 +92,7 @@ public class ExerciseDAO {
                 String type = data[3];
                 int time = Integer.parseInt(data[4]);
 		String comment = data[5];
-                Exercise exercise = new Employee(id, mId, ts, type, time, comment);
+                Exercise exercise = new (id, mId, ts, type, time, comment);
                 myList.add(exercise);
             }
         } catch (IOException ioe) {
@@ -123,8 +123,8 @@ public class ExerciseDAO {
 
         myList.stream().forEach((exercise) -> {
             sb.append(String.format("%5d : %d, %s, %s, %d, %s\n", exercise.getDbId(), exercise.getMemId(),
-                    exercise.getTimeStamp(), employee.getExerciseType(),
-                    exercise.getExerciseLength(), employee.getExerciseComments()));
+                    exercise.getTimeStamp(), exercise.getExerciseType(),
+                    exercise.getExerciseLength(), exercise.getExerciseComments()));
         });
 
         return sb.toString();
