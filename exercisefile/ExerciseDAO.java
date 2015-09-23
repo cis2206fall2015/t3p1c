@@ -13,7 +13,7 @@ import java.util.List;
 
 /**
  *
- * @author Brett Burley-Inners
+ * @author Team 3 
  */
 public class ExerciseDAO {
 
